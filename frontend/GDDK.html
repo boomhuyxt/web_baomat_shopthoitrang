@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Tài Khoản Your Style</title>
+    <!-- Tải Tailwind CSS để sử dụng các tiện ích cơ bản -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tải phông chữ Inter và Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Tải Font Awesome cho các icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Liên kết đến tệp CSS tùy chỉnh đã tách -->
+    <link rel="stylesheet" href="dangky.css">
+</head>
+<body class="bg-primary-bg font-inter text-secondary-text">
+
+    <!-- Wrapper Chính: Đảm bảo form căn giữa màn hình tuyệt đối -->
+    <div class="register-wrapper">
+        
+        <!-- Phần Form Đăng Ký (Không còn cột hình ảnh) -->
+        <div class="register-form-card">
+            <div class="max-w-md w-full p-8 sm:p-10">
+                <h2 class="text-4xl font-playfair font-extrabold mb-2 text-secondary-text">Đăng Ký</h2>
+                <p class="text-text-muted mb-8">Tạo tài khoản mới để bắt đầu hành trình phong cách của bạn.</p>
+
+                <form class="space-y-6" id="register-form">
+                    <!-- Tên người dùng -->
+                    <div>
+                        <label for="username" class="input-label">
+                            <i class="fas fa-user mr-2 text-primary"></i>Tên Người Dùng
+                        </label>
+                        <input type="text" id="username" placeholder="Nhập tên người dùng" class="input-field" required>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="input-label">
+                            <i class="fas fa-envelope mr-2 text-primary"></i>Địa chỉ Email
+                        </label>
+                        <input type="email" id="email" placeholder="Ví dụ: yourname@email.com" class="input-field" required>
+                    </div>
+
+                    <!-- Mật khẩu -->
+                    <div>
+                        <label for="password" class="input-label">
+                            <i class="fas fa-lock mr-2 text-primary"></i>Mật khẩu
+                        </label>
+                        <input type="password" id="password" placeholder="Nhập mật khẩu (tối thiểu 8 ký tự)" class="input-field" required>
+                    </div>
+
+                    <!-- Xác nhận Mật khẩu -->
+                    <div>
+                        <label for="confirm-password" class="input-label">
+                            <i class="fas fa-check-circle mr-2 text-primary"></i>Xác nhận Mật khẩu
+                        </label>
+                        <input type="password" id="confirm-password" placeholder="Nhập lại mật khẩu" class="input-field" required>
+                    </div>
+
+                    <!-- Điều khoản & Chính sách -->
+                    <div class="flex items-start">
+                        <input id="terms" type="checkbox" class="form-checkbox h-4 w-4 rounded text-primary focus:ring-primary-focus-ring border-input-border" required>
+                        <label for="terms" class="ml-2 text-sm text-text-muted cursor-pointer">
+                            Tôi đồng ý với 
+                            <a href="#" class="text-link-color hover:underline font-medium">Điều khoản dịch vụ</a> và 
+                            <a href="#" class="text-link-color hover:underline font-medium">Chính sách bảo mật</a>.
+                        </label>
+                    </div>
+
+                    <!-- Nút Đăng Ký -->
+                    <button type="submit" class="submit-button">
+                        <i class="fas fa-user-plus mr-2"></i> Đăng Ký Tài Khoản
+                    </button>
+                </form>
+
+                <!-- Footer / Đã có tài khoản? -->
+                <p class="mt-8 text-center text-text-muted text-sm">
+                    Đã có tài khoản? 
+                    <a href="login.html" class="text-link-color hover:underline font-semibold transition duration-150">Đăng Nhập Ngay</a>
+                </p>
+            </div>
+        </div>
+    </div>
+        <script src="js/dangky.js"></script>
+</body>
+</html>

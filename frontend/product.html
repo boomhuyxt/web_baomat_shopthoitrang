@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Style - Chi Tiết Sản Phẩm</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-left">
+        <div class="logo-wrap">
+          <h1 class="logo"><a href="index.html">Your Style</a></h1>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <form
+          class="header-search"
+          action="#"
+          onsubmit="event.preventDefault();"
+        >
+          <input
+            type="text"
+            class="header-search-input"
+            placeholder="Tìm kiếm..."
+          />
+          <button class="header-search-btn" aria-label="search">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <circle
+                cx="11"
+                cy="11"
+                r="6"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              />
+              <path
+                d="M21 21l-4.35-4.35"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="header-right">
+        <a href="giohang.html" class="icon-btn" aria-label="cart">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M7 4h-2l-1 2h2l3.6 7.59-1.35 2.44C8.89 16.37 9.5 17 10.28 17H19v-2H10.28l.94-1.7L16.5 6H7V4z"
+              fill="currentColor"
+              opacity="0.95"
+            />
+            <circle cx="10.5" cy="20.5" r="1.5" fill="currentColor" />
+            <circle cx="17.5" cy="20.5" r="1.5" fill="currentColor" />
+          </svg>
+        </a>
+
+        <button id="logout-btn" class="logout-btn" style="display:none; position:absolute; right:0; top:40px; z-index:50;">Đăng xuất</button>
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v1h20v-1c0-3.33-6.67-5-10-5z"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="product-detail">
+      <div class="product-gallery">
+        <img id="productImage" src="" alt="" />
+      </div>
+
+      <div class="info">
+        <!-- Thông tin cơ bản -->
+        <div class="basic-info">
+          <h2 id="productName" class="product-title"></h2>
+          <div class="product-meta">
+            <span class="product-id">Mã SP: <span id="productId"></span></span>
+            <span class="category-name">Danh mục: <span id="productCategory"></span></span>
+          </div>
+          <h3 id="productPrice" class="price"></h3>
+        </div>
+
+        <!-- Chi tiết sản phẩm -->
+        <div class="product-details">
+          <h4>THÔNG TIN CHI TIẾT</h4>
+          <div class="details-grid">
+            <div class="detail-item">
+              <span class="label">Tình trạng:</span>
+              <span class="value" id="productStock">Còn <span></span> sản phẩm</span>
+            </div>
+            <div class="detail-item" id="size-selection-container">
+              <span class="label">Kích thước:</span>
+              <div class="value" id="productSize">
+                <!-- Size buttons will be inserted here by product.js -->
+              </div>
+            </div>
+            <div class="detail-item">
+              <span class="label">Màu sắc:</span>
+              <span class="value" id="productColor"></span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Danh mục:</span>
+              <span class="value" id="productCategoryDetail"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ưu đãi và vận chuyển -->
+        <div class="promotions-section">
+          <div class="voucher">
+            <h4>ƯU ĐÃI</h4>
+            <button>Giảm 5%</button>
+            <button>Giảm 4%</button>
+            <button>Giảm 3%</button>
+          </div>
+
+          <div class="shipping-info">
+            <p class="ship">
+              <i class="fas fa-truck"></i> Giao hàng nhanh trong 4 giờ • Freeship
+            </p>
+            <p class="guarantee">
+              <i class="fas fa-shield-alt"></i> Bảo hành chính hãng
+            </p>
+          </div>
+        </div>
+
+        <!-- Mua hàng -->
+        <div class="purchase-section">
+          <div class="quantity-wrapper">
+            <span class="label">Số lượng:</span>
+            <div class="quantity">
+              <button class="qty-btn" onclick="decreaseQty()">-</button>
+              <input id="quantityInput" type="number" value="1" min="1" />
+              <button class="qty-btn" onclick="increaseQty()">+</button>
+            </div>
+          </div>
+
+          <div class="actions">
+            <div class="top-actions">
+              <button class="add-cart">
+                <i class="fas fa-shopping-cart"></i>
+                THÊM VÀO GIỎ HÀNG
+              </button>
+            </div>
+            <div class="bottom-actions">
+              <button class="buy-now">MUA NGAY</button>
+              <button class="try-on">THỬ ĐỒ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>© 2025 YOUR STYLE - Thời trang cho mọi phong cách</p>
+    </footer>
+
+    <script src="js/product.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,103 @@
+/* --- BIẾN CSS VÀ THIẾT LẬP CHUNG --- */
+:root {
+    --primary-color: #7B5B42; /* Màu Nút & Điểm nhấn chính (Nâu Đất) */
+    --secondary-color: #3D0C02; /* Màu Chữ Chính (Nâu Sẫm) */
+    --background-color: #E3DAC9; /* Nền kem/nude */
+    --card-bg: #FAF5EB; /* Nền card đăng ký */
+    --text-muted: #574B40; /* Chữ phụ, hướng dẫn */
+    --link-color: #7B5B42;
+    --input-border: #C8C8C8;
+    --input-focus-ring: rgba(123, 91, 66, 0.5); /* Primary color with transparency */
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Các lớp tiện ích Tailwind mở rộng từ biến CSS */
+.bg-primary-bg { background-color: var(--background-color); }
+.text-secondary-text { color: var(--secondary-color); }
+.text-text-muted { color: var(--text-muted); }
+.text-link-color { color: var(--link-color); }
+.text-primary { color: var(--primary-color); }
+.hover\:text-link-color:hover { color: var(--link-color); }
+.focus\:ring-primary-focus-ring:focus { --tw-ring-color: var(--input-focus-ring); }
+.border-input-border { border-color: var(--input-border); }
+
+/* --- KIỂU CHỮ (Sử dụng tên font đã khai báo trong HTML) --- */
+.font-inter { font-family: 'Inter', sans-serif; }
+.font-playfair { font-family: 'Playfair Display', serif; }
+
+/* --- LAYOUT CHÍNH (Tối ưu cho Mobile & Desktop) --- */
+
+/* Wrapper cho toàn bộ nội dung, đảm bảo form được căn giữa tuyệt đối trên mọi màn hình */
+.register-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Chiếm toàn bộ chiều cao màn hình */
+    padding: 1rem; /* Padding cho mobile */
+    background-color: var(--background-color);
+}
+
+/* Thẻ Form đăng ký độc lập */
+.register-form-card {
+    background-color: var(--card-bg);
+    border-radius: 1.5rem; /* Bo góc tổng thể */
+    box-shadow: var(--shadow);
+    /* Giới hạn chiều rộng tối đa để form không quá rộng trên desktop */
+    max-width: 450px; 
+    width: 100%; /* Chiếm toàn bộ chiều rộng có sẵn (trong giới hạn max-width) */
+    overflow: hidden;
+}
+
+/* --- KIỂU FORM VÀ INPUT --- */
+.input-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.875rem; /* sm */
+    color: var(--text-muted);
+}
+
+.input-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--input-border);
+    border-radius: 0.5rem; /* rounded-lg */
+    transition: all 0.2s ease-in-out;
+    background-color: white;
+    color: var(--secondary-color);
+}
+
+.input-field:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--input-focus-ring);
+}
+
+/* Tùy chỉnh placeholder */
+.input-field::placeholder {
+    color: #A0A0A0;
+}
+
+/* --- KIỂU NÚT SUBMIT --- */
+.submit-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 700;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s, transform 0.1s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 6px rgba(123, 91, 66, 0.3);
+}
+
+.submit-button:hover {
+    background-color: #6A4C36; /* Tối hơn một chút khi hover */
+    transform: translateY(-1px);
+}
+
+.submit-button:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng Của Bạn - Phong cách Cổ Điển</title>
+    
+    <!-- Sử dụng font Inter để đảm bảo tính chuyên nghiệp -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Đảm bảo icon từ Font Awesome được tải -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS ĐÃ GỘP với bảng màu tùy chỉnh -->
+    <style>
+/* Bảng màu tùy chỉnh */
+:root {
+    --primary-color: #7B5B42; /* Màu Nút (Button) */
+    --secondary-color: #3D0C02; /* Màu Chữ Chính */
+    --header-bg: #9F8170; /* Màu Header */
+    --footer-bg: #E3DAC9; /* Màu Footer */
+    
+    --background-light: #f9f9f9; /* Nền trắng/kem nhẹ cho nội dung */
+    --text-light: #6b6b6b; /* Màu chữ phụ */
+    --border-color: #d1d1d1;
+    --link-color: #3D0C02;
+    --shadow: 0 1px 3px rgba(0,0,0,.08);
+}
+
+/* Thiết lập cơ bản */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-light);
+    color: var(--secondary-color);
+    margin: 0;
+    padding-bottom: 80px; /* Khoảng trống cho thanh footer cố định */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header */
+.header {
+    background-color: var(--header-bg);
+    box-shadow: var(--shadow);
+    padding: 15px 0;
+    margin-bottom: 0; 
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-section .logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary-color); /* Màu chữ chính */
+    margin: 0;
+}
+
+.logo-section .cart-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    border-left: 1px solid rgba(61, 12, 2, 0.4); /* Border màu chữ chính nhạt */
+    padding-left: 15px;
+}
+.logo-section i {
+    color: var(--secondary-color); /* Icon màu chữ chính */
+}
+
+/* Thanh tìm kiếm */
+.search-bar {
+    display: flex;
+    width: 50%;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.search-bar input {
+    flex-grow: 1;
+    padding: 8px 15px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: var(--secondary-color);
+}
+
+.search-bar button {
+    background-color: var(--primary-color);
+    color: white; /* Nút luôn dùng chữ trắng cho dễ đọc */
+    border: none;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+.search-bar button:hover {
+    background-color: #5d422c; /* Màu nút tối hơn khi hover */
+}
+
+
+/* Vùng chứa chính */
+.cart-page-container {
+    padding: 20px 0;
+}
+
+/* Tiêu đề cột */
+.cart-header-row {
+    display: grid;
+    grid-template-columns: 5fr 1.5fr 1.5fr 1.5fr 1fr; 
+    gap: 10px;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    color: var(--text-light);
+    font-size: 1rem;
+    margin-bottom: 10px;
+    align-items: center;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.col-product label {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+/* Thiết lập Checkbox */
+input[type="checkbox"] {
+    accent-color: var(--primary-color); /* Màu ô check là màu nút */
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    min-width: 18px; 
+}
+
+/* Khối Cửa Hàng */
+.shop-block {
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.shop-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+    background-color: #f7f7f7; /* Nền nhẹ nhàng cho tiêu đề shop */
+}
+
+.shop-header i {
+    color: var(--primary-color);
+    margin-right: 5px;
+}
+
+/* Chi tiết sản phẩm */
+.cart-item {
+    display: grid;
+    grid-template-columns: 5fr 1.5fr 1.5fr 1.5fr 1fr; 
+    gap: 10px;
+    padding: 15px 20px;
+    border-top: 1px solid var(--border-color);
+    align-items: center;
+    font-size: 0.95rem;
+}
+
+.cart-item:first-child {
+    border-top: none;
+}
+
+.product-name, .col-total {
+    color: var(--secondary-color); /* Màu chữ chính */
+}
+
+.col-price {
+    text-align: right; 
+    color: var(--text-light);
+    text-decoration: line-through; 
+    font-size: 0.85rem;
+}
+
+.col-price .new-price {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Điều khiển Số lượng */
+.quantity-control {
+    border: 1px solid var(--border-color);
+}
+
+.quantity-control button {
+    color: var(--secondary-color); 
+}
+
+.quantity-control button:hover {
+    color: var(--primary-color);
+}
+
+.col-total {
+    font-weight: 700;
+    color: var(--primary-color); /* Màu tổng tiền là màu nổi bật */
+}
+
+/* Nút xóa */
+.btn-delete {
+    color: var(--link-color); 
+}
+.btn-delete:hover {
+    color: var(--primary-color);
+}
+
+.btn-search-similar {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Khối voucher */
+.voucher-section {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.voucher-section a {
+    color: var(--link-color);
+}
+
+/* Thanh tổng kết (Footer Sticky) */
+.cart-footer-summary {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--footer-bg); /* Màu Footer */
+    box-shadow: 0 -3px 8px rgba(0,0,0,.1);
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+.cart-footer-summary .container {
+    justify-content: flex-end; 
+}
+
+.footer-actions {
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+.footer-actions a {
+    color: var(--link-color);
+}
+
+.total-amount {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.btn-checkout {
+    background-color: var(--primary-color);
+    color: var(--footer-bg); /* Chữ màu Kem nhạt trên nền Nâu */
+    border-radius: 4px; /* Bo góc nút */
+    height: 50px; 
+}
+
+.btn-checkout:hover {
+    background-color: #5d422c;
+}
+
+/* Responsive cho thiết bị di động */
+@media (max-width: 768px) {
+    /* Đảm bảo màu chữ và màu nút vẫn đúng trên mobile */
+    .col-total {
+        color: var(--primary-color);
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-section">
+                <!-- Icon Giỏ Hàng -->
+                <div style="font-size: 2rem; line-height: 1;">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <h1 class="logo-text">Your Style</h1>
+                <p class="cart-text">Giỏ Hàng</p>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="cart-page-container">
+            <!-- Cart items will be rendered here by cart.js -->
+        </div>
+    </main>
+
+    <!-- Thanh tổng kết cố định ở dưới cùng (Footer) -->
+    <div class="cart-footer-summary" style="display: none;">
+        <div class="container">
+            <div class="footer-actions">
+                <input type="checkbox" id="select-all-footer">
+                <label for="select-all-footer">Chọn tất cả</label>
+                <a href="#" id="delete-selected">Xóa</a>
+            </div>
+            
+            <div class="footer-right">
+                <div class="total-info">
+                    <p>Tổng thanh toán (0 Sản phẩm):</p>
+                    <span class="total-amount">0₫</span>
+                </div>
+                <button class="btn-checkout">THANH TOÁN</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+
+</html>

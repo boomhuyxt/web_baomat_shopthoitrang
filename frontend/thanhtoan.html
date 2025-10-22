@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán - Your Style</title>
+    
+    <!-- Liên kết đến tệp CSS -->
+    <link rel="stylesheet" href="thanhtoan.css">
+    
+    <!-- Font và Icon -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header (Giống giao diện Giỏ hàng) -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-section">
+                <div style="font-size: 2rem; line-height: 1;"><i class="fas fa-shopping-bag"></i></div>
+                <h1 class="logo-text">Your Style</h1>
+                <p class="checkout-text">Thanh Toán</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="checkout-page-container">
+        <div class="container">
+            
+            <!-- 1. KHỐI ĐỊA CHỈ NHẬN HÀNG -->
+            <div class="address-block">
+                <div class="address-header">
+                    <i class="fas fa-map-marker-alt"></i> Địa Chỉ Nhận Hàng
+                </div>
+                <div class="address-details">
+                    <div class="address-info">
+                        <span class="address-name-phone"></span>
+                        <span class="address-detail"></span>
+                        <span class="address-default-tag">Mặc Định</span>
+                    </div>
+                    <div class="address-actions">
+                        <a href="#">Thay Đổi</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. KHỐI SẢN PHẨM -->
+            <div class="products-block">
+
+                <div class="products-header">
+                    <div>Sản phẩm</div>
+                    <div>Đơn giá</div>
+                    <div>Số lượng</div>
+                    <div>Thành tiền</div>
+                </div>
+
+                <!-- Dynamic checkout area (populated by js/thanhtoan.js) -->
+                <div id="checkout-error" style="color:red; display:none; margin:10px 0;"></div>
+                <div id="checkout-content" style="display:none;">
+                    <div class="shop-item-group">
+                        <div class="product-checkout-item" id="checkout-product">
+                            <div class="col-product-info">
+                                <img id="checkout-image" src="https://placehold.co/60x60?text=No+Image" alt="Sản phẩm">
+                                <div class="product-details">
+                                    <p id="checkout-name"></p>
+                                    <p class="product-variant"><strong>Mã:</strong> <span id="checkout-id"></span></p>
+                                    <p class="product-variant"><strong>Danh mục:</strong> <span id="checkout-category"></span></p>
+                                    <p class="product-variant"><strong>Mô tả:</strong> <span id="checkout-description"></span></p>
+                                    <p class="product-variant"><strong>Kích cỡ:</strong> <span id="checkout-size"></span></p>
+                                    <p class="product-variant"><strong>Màu sắc:</strong> <span id="checkout-color"></span></p>
+                                </div>
+                            </div>
+                            <div class="col-price-val" id="checkout-price"></div>
+                            <div class="col-quantity-val"><input id="checkout-qty" type="number" min="1" value="1" style="width:60px"></div>
+                            <div class="col-total-val" id="checkout-total"></div>
+                        </div>
+                    </div>
+
+                    <!-- Bảo hiểm/Phí phụ -->
+                    <div class="insurance-row" style="margin-top:12px;">
+                        <div class="insurance-info">
+                            <input type="checkbox" checked id="insurance-checkbox">
+                            <label for="insurance-checkbox">Bảo hiểm Thời trang</label>
+                        </div>
+                        <div style="text-align:right;">
+                            <span style="color: var(--secondary-color);" id="insurance-fee">10.000₫</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 3. KHỐI TỔNG KẾT GIAO DỊCH -->
+            <div class="summary-block">
+                <!-- Voucher -->
+                <div class="voucher-summary">
+                    <span style="font-weight: 500;"><i class="fas fa-ticket-alt"></i> Mã Giảm Giá</span>
+                    <a href="#">Chọn hoặc nhập mã</a>
+                </div>
+
+                <!-- Ghi chú cho đơn hàng -->
+                <div class="note-box">
+                    <i class="fas fa-pen-to-square"></i> Ghi chú cho người bán: 
+                    <input type="text" placeholder="Lưu ý cho đơn hàng của bạn (Tùy chọn)" style="width: 80%; border: none; background: transparent; color: var(--secondary-color); margin-left: 10px; outline: none;">
+                </div>
+
+                <!-- Phương thức thanh toán -->
+                <div class="payment-method">
+                    <span style="font-weight: 500;"><i class="fas fa-credit-card"></i> Phương thức Thanh Toán</span>
+                    <a href="#">Thanh toán khi nhận hàng</a>
+                </div>
+
+                <!-- Chi tiết tổng kết -->
+                <div class="final-summary">
+                    <div class="final-row">
+                        <span>Tổng tiền hàng</span>
+                        <strong id="summary-subtotal-value">0₫</strong>
+                    </div>
+                    <div class="final-row">
+                        <span>Phí bảo hiểm</span>
+                        <strong id="insurance-fee">10.000₫</strong>
+                    </div>
+                    <div class="final-row">
+                        <span>Tổng phí vận chuyển</span>
+                        <strong id="shipping-fee">25.000₫</strong>
+                    </div>
+                    <div class="final-row" style="margin-top: 15px;">
+                        <span>Giảm giá Voucher</span>
+                        <strong style="color: #ff0000;" id="voucher-value">-0₫</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Khoảng trống cuối cùng để tránh bị footer che mất nội dung -->
+            <div style="height: 100px;"></div>
+
+        </div>
+    </div>
+
+    <!-- Thanh tổng kết cố định ở dưới cùng (FOOTER STICKY) -->
+    <div class="checkout-sticky-footer">
+        <div class="container">
+            <div class="final-total-display">
+                <p>Tổng Thanh Toán:</p>
+                <span id="final-total-payment" class="total-payment-value">0₫</span>
+            </div>
+            <button class="btn-place-order">ĐẶT HÀNG</button>
+        </div>
+    </div>
+
+    <!-- Load checkout script -->
+    <script src="js/thanhtoan.js"></script>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-check-circle"></i>
+                <h2>Đặt Hàng Thành Công!</h2>
+            </div>
+            <div class="modal-body">
+                <p>Cảm ơn bạn đã mua hàng tại Your Style.</p>
+                <p>Mã đơn hàng của bạn là: <strong id="modal-order-id"></strong></p>
+                <p>Chúng tôi sẽ sớm liên hệ với bạn để xác nhận đơn hàng.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="modal-ok-btn" class="btn-primary">Về Trang Chủ</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

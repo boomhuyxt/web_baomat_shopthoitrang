@@ -1,0 +1,242 @@
+/* Biến CSS cho màu sắc dễ quản lý */
+:root {
+    /* Màu nền trang (Xanh đậm/Tối) */
+    --bg-color-page: #0f172a; 
+    --bg-color-dark: #ffffff; /* Màu tối */
+    --card-color: #E3DAC9; /* Màu nền form */
+    --text-color-light: #3D0C02; /* Màu chữ sáng */
+    --input-bg-color: #ffffff; /* Màu nền input */
+    --primary-color: #7B5B42; /* Màu vàng cam cho nút Đăng nhập */
+    --facebook-color: #1877f2;
+    --google-color: #db4437;
+    --link-color: #3b82f6;
+}
+
+/* Thiết lập cơ bản cho Body */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color:  #9F8170 ;
+    color: var(--text-color-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Thẻ đăng nhập */
+.login-card {
+    background-color: var(--card-color);
+    padding: 40px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 420px; /* Giới hạn chiều rộng tối đa */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* Phần tiêu đề */
+.header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--text-color-light);
+}
+
+.header p {
+    font-size: 0.9rem;
+    color: #94a3b8; /* Màu chữ xám nhạt */
+    margin-bottom: 25px;
+}
+
+/* Nhóm form input */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #475569;
+    border-radius: 8px;
+    background-color: var(--input-bg-color);
+    color: var(--text-color-light);
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 183, 0, 0.2);
+}
+
+/* Hàng tùy chọn (Ghi nhớ và Quên mật khẩu) */
+.options-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 0.85rem;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    color: #94a3b8;
+    cursor: pointer;
+}
+
+/* Tùy chỉnh Checkbox */
+.checkbox-group input[type="checkbox"] {
+    margin-right: 8px;
+    cursor: pointer;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #94a3b8;
+    border-radius: 4px;
+    background-color: var(--input-bg-color);
+    display: inline-block;
+    position: relative;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.checkbox-group input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    color: var(--bg-color-dark); /* Sử dụng màu tối để hiện dấu tick */
+    font-weight: bold;
+}
+
+.forgot-password a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.forgot-password a:hover {
+    color: #7dd3fc;
+}
+
+/* Nút chính */
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.btn-login {
+    background-color: var(--primary-color);
+    color: var(--bg-color-dark); /* Màu chữ tối cho nút sáng */
+    margin-bottom: 25px;
+}
+
+.btn-login:hover {
+    background-color: #ff2b2b;
+    transform: translateY(-1px);
+}
+
+/* Đường phân chia */
+.divider {
+    margin: 25px 0;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+/* Nhóm đăng nhập mạng xã hội */
+.social-login-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.btn-social {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--text-color-light);
+}
+
+.btn-facebook {
+    background-color: var(--facebook-color);
+}
+
+.btn-google {
+    background-color: var(--google-color);
+}
+
+.btn-social i {
+    font-size: 1.1rem;
+}
+
+/* Liên kết đăng ký */
+.register-link {
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.register-link a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.register-link a:hover {
+    color: #7dd3fc;
+}
+
+/* Điều chỉnh responsive cho thiết bị di động */
+@media (max-width: 500px) {
+    .login-card {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+    
+    .header h1 {
+        font-size: 1.6rem;
+    }
+
+    .social-login-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .options-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .forgot-password {
+        margin-top: 5px;
+    }
+}
